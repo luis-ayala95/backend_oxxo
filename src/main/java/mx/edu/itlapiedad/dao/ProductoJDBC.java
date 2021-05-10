@@ -19,4 +19,10 @@ String sql;
 		return conexion.query(sql, new ProductoRM());
 	}
 
+	@Override
+	public void insertarProducto(Producto pro) {
+	sql = "insert into productos (descripcion,precio,codigo_barras,existencia) values (?,?,?,?)";
+	conexion.update(sql,pro.getDescripcion(),pro.getPrecio(),pro.getCodigo_barras(),pro.getExistencia());
+	}
+
 }

@@ -34,10 +34,18 @@ ProductoDAO repositorio;
 	public void insertarProducto(@RequestBody Producto pro) {
 		repositorio.insertarProducto(pro);
 	}
+<<<<<<< HEAD
 	
 	@PutMapping("/producto/{id}")
 	public void actualizar_producto(@RequestBody Producto pro,
 			@PathVariable int id) {
 		repositorio.actualizarProducto(pro,id);
 	}
+=======
+	@GetMapping("consultaProduc/{id}")
+	public List<Producto>consultarId(@PathVariable int id){
+		return repositorio.consultarI(id);
+	}
+	
+>>>>>>> a5f5a2b178dd2b130d746494ace68ab0b8152b7a
 }

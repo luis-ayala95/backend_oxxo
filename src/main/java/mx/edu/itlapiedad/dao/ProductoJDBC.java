@@ -25,4 +25,15 @@ String sql;
 	conexion.update(sql,pro.getDescripcion(),pro.getPrecio(),pro.getCodigo_barras(),pro.getExistencia());
 	}
 
+	@Override
+	public void actualizarProducto(Producto pro, int id) {
+		// TODO Auto-generated method stub
+		sql="UPDATE productos set descripcion= ?, precio=?, codigo_barras =?,"
+				+ "existencia=? where id=?";
+		conexion.update(sql,pro.getDescripcion(),pro.getPrecio(),pro.getCodigo_barras(),
+				pro.getExistencia(),id);
+		
+	}
+
 }
+

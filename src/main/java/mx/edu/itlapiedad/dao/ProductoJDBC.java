@@ -39,7 +39,11 @@ String sql;
 		return  conexion.query(sql, new ProductoRM(),id);
 	}
 	
-	
+	@Override 
+	public void eliminar(int id) {
+		sql = "delete from productos where id=?";
+		conexion.update(sql,id);
+	}
 
 }
 

@@ -12,6 +12,7 @@ public interface ProductoDAO {
 	void insertarProducto(Producto pro);
     void actualizarProducto(Producto pro, int id);
     List<Producto> consultarI(int id);
+	void eliminar(int id);
 	
 	
     

@@ -19,7 +19,7 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public String geNombre() {
+public String getNombre() {
 	return nombre;
 }
 public void setNombre(String nombre) {

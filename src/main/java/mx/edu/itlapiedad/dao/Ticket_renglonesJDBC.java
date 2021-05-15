@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,20 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	public void actualizarTicket_renglones(Ticket_renglones ti_ren, int id) {
 		sql="UPDATE ticket_renglones set ticket_id= ?, producto_id=?, cantidad=?, precio=? where id=?";
 	conexion.update(sql,ti_ren.getTicket_id(),ti_ren.getProducto_id(),ti_ren.getCantidad(),ti_ren.getPrecio(),id);
+		
+	}
+
+	@Override
+	public List<Ticket_renglones> consultar() {
+		sql = "select * from  ticket_renglones";
+		return conexion.query(sql, new Ticket_renglonesRM());
+		
+	}
+
+	@Override
+	public void eliminar(int id) {
+		sql = "delete from productos where id=?";
+		conexion.update(sql, id);
 		
 	}
 }

@@ -1,4 +1,4 @@
-package mx.edu.itlapiedad.WServices;
+package mx.edu.itlapiedad.sw;
 
 import java.util.List;
 
@@ -17,7 +17,8 @@ import mx.edu.itlapiedad.models.Producto;
 
 @RestController
 @RequestMapping("/devops")
-public class productos {
+public class OperacionesProductos {
+
 	@Autowired
 	ProductoDAO repositorio;
 

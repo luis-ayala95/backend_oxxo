@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,19 @@ public class CajerosJDBC implements CajerosDAO {
 		// TODO Auto-generated method stub
 		sql="UPDATE cajeros set nombre= ? where id=?";
 		conexion.update(sql,ca.getNombre(),id);
+		
+	}
+
+	@Override
+	public List<Cajeros> consultar() {
+		sql="select * from cajeros";
+		return conexion.query(sql, new CajerosRM());
+	}
+
+	@Override
+	public void eliminar(int id) {
+		sql ="delete from cajeros where id=?";
+		conexion.update(sql,id);
 		
 	}
 }

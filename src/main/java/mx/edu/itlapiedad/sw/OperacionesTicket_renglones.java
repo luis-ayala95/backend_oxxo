@@ -1,6 +1,10 @@
 package mx.edu.itlapiedad.sw;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +21,10 @@ import mx.edu.itlapiedad.models.Ticket_renglones;
 public class OperacionesTicket_renglones {
 	@Autowired
 	Ticket_renglonesDAO repositorio;
-
+  @GetMapping("consultarRenglon")
+  public List<Ticket_renglones>consultarProductos(){
+	  return repositorio.consultar();
+  }
 	
 	@PostMapping("/ticket_renglones")
 	public void insertarTicket_renglones(@RequestBody Ticket_renglones ti_ren) {
@@ -27,6 +34,10 @@ public class OperacionesTicket_renglones {
 	@PutMapping("/ticket_renglones/{id}")
 	public void actualizar_ticket_renglones(@RequestBody Ticket_renglones ti_ren, @PathVariable int id) {
 		repositorio.actualizarTicket_renglones(ti_ren,id);
+	}
+	@DeleteMapping("/ticket_renglones/{id}")
+	public void eliminarProducto(@PathVariable int id) {
+		repositorio.eliminar(id);
 	}
 	
 }

@@ -1,6 +1,10 @@
 package mx.edu.itlapiedad.sw;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +22,10 @@ public class OperacionesCajeros {
 	@Autowired
 	CajerosDAO repositorio;
 	
+	@GetMapping("consultaCajero")
+	public List<Cajeros>consultarCajeros(){
+		return repositorio.consultar();
+	}
 	
 	@PostMapping("/cajeros")
 	public void insertarCajeros(@RequestBody Cajeros ca) {
@@ -29,5 +37,8 @@ public class OperacionesCajeros {
 			@PathVariable int id) {
 		repositorio.actualizarCajeros(ca,id);
 	}
-	
+	@DeleteMapping("/cajeros/{id}")
+	public void  eliminarCajero(@PathVariable int id) {
+		repositorio.eliminar(id);
+	}
 }

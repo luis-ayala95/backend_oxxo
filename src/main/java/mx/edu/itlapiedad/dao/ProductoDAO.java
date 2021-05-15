@@ -13,6 +13,7 @@ public interface ProductoDAO {
     void actualizarProducto(Producto pro, int id);
     List<Producto> consultarI(int id);
 	
+	
     
 	
 

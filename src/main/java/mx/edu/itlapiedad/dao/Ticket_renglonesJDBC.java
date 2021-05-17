@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.dao;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,17 +30,17 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		
 	}
 
+	
 	@Override
-	public List<Ticket_renglones> consultar() {
-		sql = "select * from  ticket_renglones";
-		return conexion.query(sql, new Ticket_renglonesRM());
+	public void eliminar(int id) {
+		sql = "delete from ticket_renglones where id=?";
+		conexion.update(sql, id);
 		
 	}
 
 	@Override
-	public void eliminar(int id) {
-		sql = "delete from productos where id=?";
-		conexion.update(sql, id);
-		
+	public List<Ticket_renglones> consultar() {
+		sql = "select * from  ticket_renglones";
+		return conexion.query(sql, new Ticket_renglonesRM());
 	}
 }

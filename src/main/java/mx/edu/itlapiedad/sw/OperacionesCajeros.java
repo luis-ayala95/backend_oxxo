@@ -41,4 +41,8 @@ public class OperacionesCajeros {
 	public void  eliminarCajero(@PathVariable int id) {
 		repositorio.eliminar(id);
 	}
+	@GetMapping("/consultaCajeroId/{id}")
+	public List<Cajeros>consultarCajerosId(@PathVariable int id){
+		return repositorio.consultarI(id);
+	}
 }

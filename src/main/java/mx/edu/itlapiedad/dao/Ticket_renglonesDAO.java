@@ -18,6 +18,8 @@ public interface Ticket_renglonesDAO {
 
 	List<Ticket_renglones> consultar();
 
+	List<Ticket_renglones> consultarId(int id);
+
 	
 
 }

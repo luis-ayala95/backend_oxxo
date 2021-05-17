@@ -40,4 +40,8 @@ public class OperacionesTickets {
 	public void eliminarTicket(@PathVariable int id) {
 	repositorio.eliminar(id);
 	}
+	@GetMapping("/consultaTicketsId/{id}")
+	public List<Tickets>consultarTicketsId(@PathVariable int id){
+		return repositorio.consultarId(id);
+	}
 }

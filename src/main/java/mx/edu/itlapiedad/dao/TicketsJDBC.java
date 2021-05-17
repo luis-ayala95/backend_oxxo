@@ -40,4 +40,10 @@ public class TicketsJDBC implements TicketsDAO{
 		
 	}
 
+	@Override
+	public List<Tickets> consultarId(int id) {
+		sql = "select * from tickets where id=?";
+		return conexion.query(sql, new TicketsRM(),id);
+	}
+
 }

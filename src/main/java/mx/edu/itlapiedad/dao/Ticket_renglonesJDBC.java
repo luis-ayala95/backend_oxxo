@@ -43,4 +43,11 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		sql = "select * from  ticket_renglones";
 		return conexion.query(sql, new Ticket_renglonesRM());
 	}
+
+	@Override
+	public List<Ticket_renglones> consultarId(int id) {
+		// TODO Auto-generated method stub
+		sql = "select * from  ticket_renglones where id=?";
+		return conexion.query(sql, new Ticket_renglonesRM(),id);
+	}
 }

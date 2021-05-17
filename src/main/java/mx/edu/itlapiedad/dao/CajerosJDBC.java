@@ -40,4 +40,10 @@ public class CajerosJDBC implements CajerosDAO {
 		conexion.update(sql,id);
 		
 	}
+
+	@Override
+	public List<Cajeros> consultarI(int id) {
+		sql = "select * from cajeros where id=?";
+		return   conexion.query(sql, new CajerosRM(),id);
+	}
 }

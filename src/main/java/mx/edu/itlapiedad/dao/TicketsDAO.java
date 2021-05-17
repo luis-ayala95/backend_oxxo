@@ -14,4 +14,6 @@ public interface TicketsDAO {
 
 	void eliminar(int id);
 
+	List<Tickets> consultarId(int id);
+
 }

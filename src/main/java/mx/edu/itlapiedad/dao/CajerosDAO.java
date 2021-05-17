@@ -9,5 +9,6 @@ public interface CajerosDAO {
 	void actualizarCajeros(Cajeros ca, int id);
 	List<Cajeros> consultar();
 	void eliminar(int id);
+	List<Cajeros> consultarI(int id);
 
 }

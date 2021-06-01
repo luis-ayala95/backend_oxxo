@@ -21,10 +21,10 @@ jobs:
       with:
         java-version: 1.8
     - name: Compilar y empaquetar con Maven
-      run: mvn -B package --file backend/pom.xml
+      run: mvn -B package --file pom.xml
     - name: Subir.jar
     - uses: actions/upload-artifact@v1
       with:
          name: backend
-         path: backend/target/backend-0.0.1.jar
+         path: target/backend-0.0.1.jar
     

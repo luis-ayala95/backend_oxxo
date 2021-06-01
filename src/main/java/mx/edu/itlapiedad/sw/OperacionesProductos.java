@@ -22,7 +22,7 @@ public class OperacionesProductos {
 	@Autowired
 	ProductoDAO repositorio;
 
-	@GetMapping("consultaProduc")
+	@GetMapping("consultaPdct")
 	public List<Producto>consultarProductos(){
 		return repositorio.consultar();
 	}

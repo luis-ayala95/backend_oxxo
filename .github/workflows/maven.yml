@@ -23,5 +23,7 @@ jobs:
         distribution: 'adopt'
     - name: Compilar y empaquetar Maven
       run: mvn -B package --file pom.xml
+    - name: Subir .jar
+    - uses: actions/upload-artifac@v1
   
       

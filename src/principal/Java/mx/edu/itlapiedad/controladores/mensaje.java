@@ -20,7 +20,7 @@ ProductoDAO repositorio;
 
 	@GetMapping("/Hola")
 	public String mostrtarHola(@RequestParam String nombre) {
-	return "hola compañeros de devops"+nombre;	
+	return "hola clase de devops"+nombre;	
 	}
 	
 	

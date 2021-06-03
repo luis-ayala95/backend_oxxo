@@ -24,7 +24,6 @@ jobs:
     - name: Compilar y empaquetar Maven
       run: mvn -B package --file pom.xml
     - name: Subir .jar
-      uses: action/upload-artifact@v1
       with:
         name: backend
         path: target/backend-0.0.1.jar

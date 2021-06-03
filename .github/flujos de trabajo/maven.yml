@@ -27,7 +27,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: backend
-        path: target/backend-0.0.1.jar
+        path: target/backend_oxxo-0.0.1.jar
     
   
       

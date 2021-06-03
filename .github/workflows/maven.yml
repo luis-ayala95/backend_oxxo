@@ -24,6 +24,6 @@ jobs:
     - name: Compilar y empaquetar Maven
       run: mvn -B package --file pom.xml
     - name: Subir .jar
-    - uses: actions/upload-artifac@v1
+      uses: actions/upload-artifac@v1
   
       

@@ -49,13 +49,13 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	}
 
 	@Override
-	public List<Ticket_renglones> totalImporte(int id) {
+	public List<Ticket_renglones> totalImporte(int id, String fecha_hora) {
 		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte "
 				+ "from ticket_renglones join tickets "
 				+ "on ticket_renglones.TICKET_id = tickets.id "
 				+ "join cajeros on cajeros.id=tickets.CAJERO_id"
 				+ "where cajeros.id=? and fecha_hora= ?";
-		return conexion.query(sql, new Ticket_renglonesRM());
+		return conexion.query(sql, new Ticket_renglonesRM(),id,fecha_hora);
 	}
 
 }

@@ -22,7 +22,7 @@ public class OperacionesCajeros {
 	@Autowired
 	CajerosDAO repositorio;
 	
-	@GetMapping("consultaCajero")
+	@GetMapping("consultarCajeros")
 	public List<Cajeros>consultarCajeros(){
 		return repositorio.consultar();
 	}
@@ -41,7 +41,7 @@ public class OperacionesCajeros {
 	public void  eliminarCajero(@PathVariable int id) {
 		repositorio.eliminar(id);
 	}
-	@GetMapping("/consultaCajeroId/{id}")
+	@GetMapping("/consultarCajeroId/{id}")
 	public List<Cajeros>consultarCajerosId(@PathVariable int id){
 		return repositorio.consultarI(id);
 	}

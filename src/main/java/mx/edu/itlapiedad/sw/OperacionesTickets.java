@@ -1,6 +1,10 @@
 package mx.edu.itlapiedad.sw;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +22,10 @@ public class OperacionesTickets {
 	@Autowired
 	TicketsDAO repositorio;
 
+	@GetMapping("consultaTickets")
+	public List<Tickets>consultarTickets(){
+		return repositorio.consultar();
+	}
 	
 	@PostMapping("/tickets")
 	public void insertarTickets(@RequestBody Tickets ti) {
@@ -28,5 +36,12 @@ public class OperacionesTickets {
 	public void actualizar_tickets(@RequestBody Tickets ti, @PathVariable int id) {
 		repositorio.actualizarTickets(ti,id);
 	}
-	
+	@DeleteMapping("/ticketsdelete/{id}")
+	public void eliminarTicket(@PathVariable int id) {
+	repositorio.eliminar(id);
+	}
+	@GetMapping("/consultaTicketsId/{id}")
+	public List<Tickets>consultarTicketsId(@PathVariable int id){
+		return repositorio.consultarId(id);
+	}
 }

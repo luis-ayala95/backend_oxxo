@@ -1,8 +1,11 @@
 package mx.edu.itlapiedad.sw;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,7 +23,7 @@ import mx.edu.itlapiedad.models.Ticket_renglones;
 public class OperacionesTicket_renglones {
 	@Autowired
 	Ticket_renglonesDAO repositorio;
-
+	
 	
 	@PostMapping("/ticket_renglones")
 	public void insertarTicket_renglones(@RequestBody Ticket_renglones ti_ren) {
@@ -32,5 +35,23 @@ public class OperacionesTicket_renglones {
 		repositorio.actualizarTicket_renglones(ti_ren,id);
 	}
 	
+	@GetMapping("consultarTickets_renglones")
+	public List<Ticket_renglones>consultarTicket_renglones(){
+		return repositorio.consultar();
+	}
 	
+	@DeleteMapping("/ticket_renglones/{id}")
+	public void eliminarProducto(@PathVariable int id) {
+		repositorio.eliminar(id);
+	}
+	@GetMapping("/consultarTickets_renglonesId/{id}")
+	public List<Ticket_renglones>consultarTicket_renglonesId(@PathVariable int id){
+		return repositorio.consultarId(id);
+	}
+
+	@GetMapping("/TotalImportPorCajero/{id}")
+	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id){
+		return repositorio.totalImporte(id);
+	}
+
 }

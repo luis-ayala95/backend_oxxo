@@ -27,13 +27,34 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	conexion.update(sql,ti_ren.getTicket_id(),ti_ren.getProducto_id(),ti_ren.getCantidad(),ti_ren.getPrecio(),id);
 		
 	}
+	
+	@Override
+	public void eliminar(int id) {
+		sql = "delete from ticket_renglones where id=?";
+		conexion.update(sql, id);
+		
+	}
+
+	@Override
+	public List<Ticket_renglones> consultar() {
+		sql = "select * from  ticket_renglones";
+		return conexion.query(sql, new Ticket_renglonesRM());
+	}
+
+	@Override
+	public List<Ticket_renglones> consultarId(int id) {
+		// TODO Auto-generated method stub
+		sql = "select * from  ticket_renglones where id=?";
+		return conexion.query(sql, new Ticket_renglonesRM(),id);
+	}
+
 	@Override
 	public List<Ticket_renglones> totalImporte(int id) {
-		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte" + 
-				"from ticket_renglones" + 
-				"join tickets on ticket_renglones.TICKET_id = tickets.id" + 
-				"join cajeros on cajeros.id=tickets.CAJERO_id" + 
-				"where cajeros.id=?;";
+		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte "
+				+ "from ticket_renglones join tickets "
+				+ "on ticket_renglones.TICKET_id = tickets.id "
+				+ "join cajeros on cajeros.id=tickets.CAJERO_id"
+				+ "where cajeros.id=?";
 		return conexion.query(sql, new Ticket_renglonesRM());
 	}
 

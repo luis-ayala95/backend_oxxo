@@ -15,7 +15,7 @@ public class Ticket_renglonesRM implements RowMapper<Ticket_renglones>{
 		ticket_ren.setTicket_id(rs.getInt("ticket_id"));
 		ticket_ren.setProducto_id(rs.getInt("producto_id"));
 		ticket_ren.setCantidad(rs.getInt("cantidad"));
-		ticket_ren.setPrecio(rs.getFloat("total"));
+		ticket_ren.setPrecio(rs.getFloat("precio"));
 		ticket_ren.setImporte(rs.getFloat("importe"));
 		
 		return ticket_ren;

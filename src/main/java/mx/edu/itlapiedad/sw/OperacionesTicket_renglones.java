@@ -48,7 +48,5 @@ public class OperacionesTicket_renglones {
 	public List<Ticket_renglones>consultarTicket_renglonesId(@PathVariable int id){
 		return repositorio.consultarId(id);
 	}
-	@GetMapping("/TotalImportPorCajero/{id}")
-	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id){
-		return repositorio.totalImporte(id);
+	
 }

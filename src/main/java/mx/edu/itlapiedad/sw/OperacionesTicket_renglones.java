@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mx.edu.itlapiedad.dao.Ticket_renglonesDAO;
@@ -49,9 +50,9 @@ public class OperacionesTicket_renglones {
 		return repositorio.consultarId(id);
 	}
 
-	@GetMapping("/TotalImportPorCajero/{id}")
-	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id){
-		return repositorio.totalImporte(id);
+	@GetMapping("/TotalImportPorCajero/{id}/fecha_hora")
+	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_hora){
+		return repositorio.totalImporte(id,fecha_hora);
 	}
 
 }

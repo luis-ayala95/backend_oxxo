@@ -1,5 +1,7 @@
 package mx.edu.itlapiedad.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -25,4 +27,14 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	conexion.update(sql,ti_ren.getTicket_id(),ti_ren.getProducto_id(),ti_ren.getCantidad(),ti_ren.getPrecio(),id);
 		
 	}
+	@Override
+	public List<Ticket_renglones> totalImporte(int id) {
+		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte" + 
+				"from ticket_renglones" + 
+				"join tickets on ticket_renglones.TICKET_id = tickets.id" + 
+				"join cajeros on cajeros.id=tickets.CAJERO_id" + 
+				"where cajeros.id=?;";
+		return conexion.query(sql, new Ticket_renglonesRM());
+	}
+
 }

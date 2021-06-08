@@ -50,4 +50,10 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		sql = "select * from  ticket_renglones where id=?";
 		return conexion.query(sql, new Ticket_renglonesRM(),id);
 	}
+
+	@Override
+	public List<Ticket_renglones> totalImporte(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

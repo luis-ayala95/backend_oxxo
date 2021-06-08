@@ -22,4 +22,10 @@ public interface Ticket_renglonesDAO {
 
 	
 
+	List<Ticket_renglones> totalImporte(int id);
+
+	
+
+	
+
 }

@@ -1,9 +1,13 @@
 package mx.edu.itlapiedad.sw;
 
 
+import java.security.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import mx.edu.itlapiedad.dao.Ticket_renglonesDAO;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
+import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 
 
 @RestController
@@ -50,9 +55,22 @@ public class OperacionesTicket_renglones {
 		return repositorio.consultarId(id);
 	}
 
-	@GetMapping("/TotalImportPorCajero/{id}/fecha_hora")
-	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_hora){
-		return repositorio.totalImporte(id,fecha_hora);
+	@GetMapping("/TotalImportePorCajero/{id}/fecha_hora")
+	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int cajero_id, @RequestParam Timestamp fecha_hora){
+		return repositorio.totalImporte(cajero_id,fecha_hora);
 	}
-
+	
+	@GetMapping("/importe_cajero/{id}/fecha")
+	public ResponseEntity<?> buscar_importe_cajero_fecha(@PathVariable int id, @RequestParam Timestamp fecha_hora) {
+		List<Ticket_renglones_importe> resultado;
+		try {
+			resultado = repositorio.buscar_importe_cajero_fecha(id,fecha_hora);
+		} catch (DataAccessException e) {
+			System.out.println(e);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Ticket_renglones_importe>>(resultado, HttpStatus.OK);
+	}
+	
+	
 }

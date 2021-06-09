@@ -1,9 +1,11 @@
 package mx.edu.itlapiedad.dao;
 
 
+import java.security.Timestamp;
 import java.util.List;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
+import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 
 
 public interface Ticket_renglonesDAO {
@@ -19,9 +21,9 @@ public interface Ticket_renglonesDAO {
 
 	List<Ticket_renglones> consultarId(int id);
 
-	
+	List<Ticket_renglones> totalImporte(int cajero_id, Timestamp fecha_hora);
 
-	List<Ticket_renglones> totalImporte(int id, String fecha_hora);
+	List<Ticket_renglones_importe> buscar_importe_cajero_fecha(int id, Timestamp fecha_hora);
 
 	
 

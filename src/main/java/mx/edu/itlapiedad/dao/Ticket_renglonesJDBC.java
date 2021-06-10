@@ -62,14 +62,11 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	}
 	
 	
-	
-	
 
 	
-<<<<<<< HEAD
+
 	}
 
 
-=======
-}
->>>>>>> a97f84bea6392bd57ed40e2d0594ef8bf4bc3dc7
+
+

@@ -53,6 +53,7 @@ public class OperacionesTicket_renglones {
 		return repositorio.consultarId(id);
 	}
 
+
 	@GetMapping("/TotalImportePorCajero/{id}")
 	public List<Ticket_renglones_importe>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_inicial, @RequestParam String fecha_final ){
 		return repositorio.totalImporte(id, fecha_inicial, fecha_final);

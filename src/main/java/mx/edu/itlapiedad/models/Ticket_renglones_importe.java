@@ -2,6 +2,7 @@ package mx.edu.itlapiedad.models;
 
 public class Ticket_renglones_importe {
 
+
 float importe;
 int id;
 String nombre;

@@ -1,6 +1,7 @@
 package mx.edu.itlapiedad.dao;
 
 
+
 import java.util.List;
 
 
@@ -59,6 +60,7 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	public List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final) {
 		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre from ticket_renglones join tickets on ticket_renglones.TICKET_id = tickets.id join cajeros on cajeros.id=tickets.CAJERO_id where cajeros.id=? and fecha_hora between ? and ?";
 		return conexion.query(sql, new Ticket_renglones_importeRM(),id, fecha_inicial,fecha_final);
+
 	}
 	
 	

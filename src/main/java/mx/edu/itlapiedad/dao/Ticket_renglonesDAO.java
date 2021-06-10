@@ -1,4 +1,5 @@
 package mx.edu.itlapiedad.dao;
+
 import java.util.List;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
@@ -20,7 +21,6 @@ public interface Ticket_renglonesDAO {
 
 	List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final);
 
-	
 
 	
 

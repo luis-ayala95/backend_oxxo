@@ -40,7 +40,7 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		conexion.update(sql, id);
 		
 	}
-
+/*
 	@Override
 	public List<Ticket_renglones> consultar() {
 		sql = "select * from  ticket_renglones";
@@ -53,36 +53,27 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		sql = "select * from  ticket_renglones where id=?";
 		return conexion.query(sql, new Ticket_renglonesRM(),id);
 	}
-
+*/
 	@Override
-	public List<Ticket_renglones> totalImporte(int cajero_id, Timestamp fecha_hora) {
-		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte "
-				+ "from ticket_renglones join tickets "
-				+ "on ticket_renglones.TICKET_id = tickets.id "
-				+ "join cajeros on cajeros.id=tickets.CAJERO_id"
-				+ "where tickets.cajero_id=? and tickets.fecha_hora between ? and ?";
-		return conexion.query(sql, new Ticket_renglonesRM(),cajero_id,fecha_hora);
+	public List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final) {
+		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre from ticket_renglones join tickets on ticket_renglones.TICKET_id = tickets.id join cajeros on cajeros.id=tickets.CAJERO_id where cajeros.id=? and fecha_hora between ? and ?";
+		return conexion.query(sql, new Ticket_renglones_importeRM(),id, fecha_inicial,fecha_final);
 	}
+	
+	
+	
+	
+
 	@Override
-	public List<Ticket_renglones_importe> buscar_importe_cajero_fecha(int id,Timestamp fecha_hora) {
-		
-		String sql_query = "SELECT  cajeros.id, sum(importe) as importe, tickets.fecha_hora "
-				+ "FROM ticket_renglones  "
-				+ "JOIN tickets ON ticket_renglones.TICKET_id = tickets.id "
-				+ "JOIN cajeros  ON cajeros.id=tickets.CAJERO_id  "
-				+ "WHERE  cajeros.id=? and fecha_hora between ? and ?";
-		return conexion.query(sql_query, new RowMapper<Ticket_renglones_importe>() {
-			public Ticket_renglones_importe mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Ticket_renglones_importe 
-				ticket_renglones = new Ticket_renglones_importe();
-				ticket_renglones.setImporte(rs.getFloat("importe"));
+	public List<Ticket_renglones> consultar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-				return ticket_renglones;
-
-			
-			}
-
-		}, id,fecha_hora);
+	@Override
+	public List<Ticket_renglones> consultarId(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

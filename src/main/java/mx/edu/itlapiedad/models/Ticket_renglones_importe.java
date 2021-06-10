@@ -1,7 +1,25 @@
 package mx.edu.itlapiedad.models;
 
 public class Ticket_renglones_importe {
-	private float importe;
+	float importe;
+	int id;
+	String nombre;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public float getImporte() {
 		return importe;

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 import mx.edu.itlapiedad.models.Tickets;
 
 @Repository
@@ -45,5 +47,15 @@ public class TicketsJDBC implements TicketsDAO{
 		sql = "select * from tickets where id=?";
 		return conexion.query(sql, new TicketsRM(),id);
 	}
-
+/*
+	@Override
+	public List<Ticket_renglones_importe> totalImporte() {
+		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre"
+				+ "from ticket_renglones "
+				+ "join tickets "
+				+ "on ticket_renglones.TICKET_id = tickets.id "
+				+ "join cajeros on cajeros.id=tickets.CAJERO_id"
+				+ "where id=1";
+		return conexion.query(sql, new Ticket_renglones_importeRM());
+	}*/
 }

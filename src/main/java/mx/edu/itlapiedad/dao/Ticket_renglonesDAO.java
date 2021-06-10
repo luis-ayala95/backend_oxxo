@@ -21,9 +21,9 @@ public interface Ticket_renglonesDAO {
 
 	List<Ticket_renglones> consultarId(int id);
 
-	List<Ticket_renglones> totalImporte(int cajero_id, Timestamp fecha_hora);
+	List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final);
 
-	List<Ticket_renglones_importe> buscar_importe_cajero_fecha(int id, Timestamp fecha_hora);
+
 
 	
 

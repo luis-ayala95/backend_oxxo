@@ -55,22 +55,9 @@ public class OperacionesTicket_renglones {
 		return repositorio.consultarId(id);
 	}
 
-	@GetMapping("/TotalImportePorCajero/{id}/fecha_hora")
-	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int cajero_id, @RequestParam Timestamp fecha_hora){
-		return repositorio.totalImporte(cajero_id,fecha_hora);
+	@GetMapping("/TotalImportePorCajero/{id}")
+	public List<Ticket_renglones_importe>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_inicial, @RequestParam String fecha_final ){
+		return repositorio.totalImporte(id, fecha_inicial, fecha_final);
 	}
-	
-	@GetMapping("/importe_cajero/{id}/fecha")
-	public ResponseEntity<?> buscar_importe_cajero_fecha(@PathVariable int id, @RequestParam Timestamp fecha_hora) {
-		List<Ticket_renglones_importe> resultado;
-		try {
-			resultado = repositorio.buscar_importe_cajero_fecha(id,fecha_hora);
-		} catch (DataAccessException e) {
-			System.out.println(e);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<Ticket_renglones_importe>>(resultado, HttpStatus.OK);
-	}
-	
-	
+		
 }

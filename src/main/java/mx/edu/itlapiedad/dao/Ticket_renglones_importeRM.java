@@ -15,7 +15,6 @@ public class Ticket_renglones_importeRM implements RowMapper<Ticket_renglones_im
 		ticket_ren.setImporte(rs.getFloat("totalImporte"));
 		ticket_ren.setNombre(rs.getString("nombre"));
 		
-		
 		return ticket_ren;
 
 	}

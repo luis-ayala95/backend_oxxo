@@ -19,8 +19,10 @@ public interface Ticket_renglonesDAO {
 
 	List<Ticket_renglones> consultarId(int id);
 
+	
 	List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final);
 
+	
 
 	
 

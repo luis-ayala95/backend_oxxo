@@ -65,8 +65,6 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	
 	
 
-	
-
 	}
 
 

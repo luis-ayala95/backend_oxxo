@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
 
+
 public class Ticket_renglonesRM implements RowMapper<Ticket_renglones>{
 	@Override
 	public Ticket_renglones mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -20,6 +21,4 @@ public class Ticket_renglonesRM implements RowMapper<Ticket_renglones>{
 		
 		return ticket_ren;
 	}
-
-
 }

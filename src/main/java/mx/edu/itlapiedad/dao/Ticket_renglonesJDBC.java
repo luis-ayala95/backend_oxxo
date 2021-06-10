@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.stereotype.Repository;
 
+
 import mx.edu.itlapiedad.models.Ticket_renglones;
 import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 
@@ -59,8 +60,16 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre from ticket_renglones join tickets on ticket_renglones.TICKET_id = tickets.id join cajeros on cajeros.id=tickets.CAJERO_id where cajeros.id=? and fecha_hora between ? and ?";
 		return conexion.query(sql, new Ticket_renglones_importeRM(),id, fecha_inicial,fecha_final);
 	}
+	
+	
+	
+	
 
 	
+<<<<<<< HEAD
 	}
 
 
+=======
+}
+>>>>>>> a97f84bea6392bd57ed40e2d0594ef8bf4bc3dc7

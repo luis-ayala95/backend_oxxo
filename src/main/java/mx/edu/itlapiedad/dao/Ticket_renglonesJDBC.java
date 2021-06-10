@@ -1,13 +1,9 @@
 package mx.edu.itlapiedad.dao;
 
-import java.security.Timestamp;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 
@@ -40,7 +36,7 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		conexion.update(sql, id);
 		
 	}
-/*
+
 	@Override
 	public List<Ticket_renglones> consultar() {
 		sql = "select * from  ticket_renglones";
@@ -53,7 +49,7 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		sql = "select * from  ticket_renglones where id=?";
 		return conexion.query(sql, new Ticket_renglonesRM(),id);
 	}
-*/
+
 	@Override
 	public List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final) {
 		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre from ticket_renglones join tickets on ticket_renglones.TICKET_id = tickets.id join cajeros on cajeros.id=tickets.CAJERO_id where cajeros.id=? and fecha_hora between ? and ?";
@@ -64,16 +60,5 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 	
 	
 
-	@Override
-	public List<Ticket_renglones> consultar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Ticket_renglones> consultarId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

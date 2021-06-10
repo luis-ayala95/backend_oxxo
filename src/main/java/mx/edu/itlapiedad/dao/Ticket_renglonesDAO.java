@@ -1,7 +1,4 @@
 package mx.edu.itlapiedad.dao;
-
-
-import java.security.Timestamp;
 import java.util.List;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;

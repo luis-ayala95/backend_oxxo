@@ -1,12 +1,17 @@
 package mx.edu.itlapiedad.dao;
 
+
 import java.util.List;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import org.springframework.stereotype.Repository;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
+import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 
 
 @Repository
@@ -48,14 +53,14 @@ public class Ticket_renglonesJDBC implements Ticket_renglonesDAO{
 		return conexion.query(sql, new Ticket_renglonesRM(),id);
 	}
 
+	
 	@Override
-	public List<Ticket_renglones> totalImporte(int id, String fecha_hora) {
-		sql="select tickets.cajero_id, sum(ticket_renglones.importe) as totalImporte "
-				+ "from ticket_renglones join tickets "
-				+ "on ticket_renglones.TICKET_id = tickets.id "
-				+ "join cajeros on cajeros.id=tickets.CAJERO_id"
-				+ "where cajeros.id=? and fecha_hora= ?";
-		return conexion.query(sql, new Ticket_renglonesRM(),id,fecha_hora);
+	public List<Ticket_renglones_importe> totalImporte(int id, String fecha_inicial, String fecha_final) {
+		sql="select cajeros.id, sum(importe) as totalImporte, cajeros.nombre from ticket_renglones join tickets on ticket_renglones.TICKET_id = tickets.id join cajeros on cajeros.id=tickets.CAJERO_id where cajeros.id=? and fecha_hora between ? and ?";
+		return conexion.query(sql, new Ticket_renglones_importeRM(),id, fecha_inicial,fecha_final);
 	}
 
-}
+	
+	}
+
+

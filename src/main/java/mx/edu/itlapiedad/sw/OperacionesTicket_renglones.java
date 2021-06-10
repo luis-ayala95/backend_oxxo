@@ -4,6 +4,7 @@ package mx.edu.itlapiedad.sw;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import mx.edu.itlapiedad.dao.Ticket_renglonesDAO;
 
 import mx.edu.itlapiedad.models.Ticket_renglones;
+import mx.edu.itlapiedad.models.Ticket_renglones_importe;
 
 
 @RestController
@@ -50,9 +52,9 @@ public class OperacionesTicket_renglones {
 		return repositorio.consultarId(id);
 	}
 
-	@GetMapping("/TotalImportPorCajero/{id}/fecha_hora")
-	public List<Ticket_renglones>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_hora){
-		return repositorio.totalImporte(id,fecha_hora);
+	@GetMapping("/TotalImportePorCajero/{id}")
+	public List<Ticket_renglones_importe>totalImportePorCajero(@PathVariable int id, @RequestParam String fecha_inicial, @RequestParam String fecha_final ){
+		return repositorio.totalImporte(id, fecha_inicial, fecha_final);
 	}
 
 }
